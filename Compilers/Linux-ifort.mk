@@ -47,8 +47,8 @@ ifdef USE_NETCDF4
     NETCDF_INCDIR ?= $(shell $(NF_CONFIG) --prefix)/include
              LIBS := $(shell $(NF_CONFIG) --flibs)
 else
-    NETCDF_INCDIR ?= /usr/local/include
-    NETCDF_LIBDIR ?= /usr/local/lib
+    NETCDF_INCDIR ?= /cm/shared/local/netcdf-4.0-ifort/include
+    NETCDF_LIBDIR ?= /cm/shared/local/netcdf-4.0-ifort/lib
              LIBS := -L$(NETCDF_LIBDIR) -lnetcdf
 endif
 
@@ -64,7 +64,8 @@ endif
 ifdef USE_MPI
          CPPFLAGS += -DMPI
  ifdef USE_MPIF90
-               FC := mpif90
+               FC := /cm/shared/local/openmpi-ifort/bin/mpif90
+              #FC := mpif9i0
  else
              LIBS += -lfmpi-pgi -lmpi-pgi
  endif
